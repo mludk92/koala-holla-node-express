@@ -9,8 +9,27 @@ let notesIn = document.querySelector('#notesIn').value
 
 function submitKoala(event){
   console.log(nameIn,ageIn,genderIn,rFFIn,notesIn, 'input fields')
-  writeTable()
+  //writeTable()
+  let koalasForServer = 
+  [{
+    name:nameIn,
+    gender:genderIn,
+    age:ageIn,
+    readyToTransfer:rFFIn,
+    notes:notesIn,
+    },]
+  axios.post('/koalas',koalasForServer).then((response) => {
+    console.log(response)
+    getKoalas()
+}).catch((error) => {
+    console.log('error')
+    alert('Something went wrong')
+})
+
 }
+
+
+
 
 
 function writeTable(){document.querySelector('#viewKoalas').innerHTML += 
@@ -26,13 +45,35 @@ function writeTable(){document.querySelector('#viewKoalas').innerHTML +=
 
 function getKoalas(){
   console.log( 'in getKoalas' );
-  // axios call to server to get koalas
-  
-} // end getKoalas
-
-function saveKoala(){
-  console.log( 'in saveKoala' );
-  // axios call to server to get koalas
+  axios.get('/koalas').then((response)=> {
+    //code that will run on a successful response 
+    //from the server 
+    console.log(response)
+    //quotes from server will be an array of quotes
+    let koalasFromServer = response.data
+    let contentDiv = document.querySelector('#content') 
+    contentDiv.innerHTML = ''
+    let i = 0
+    for(let quote of koalasFromServer){
+      {document.querySelector('#viewKoalas').innerHTML += 
+      `<tr>
+        <td>${nameIn}</td>
+        <td>${ageIn}</td>
+        <td>${genderIn}</td>
+        <td>${rFFIn}</td>
+        <td>${notesIn}</td>
+      </tr>`}
+        
+      i++
+    }
+}) //ALWAYS add .catch
 }
 
-getKoalas();
+let koalaTable = 
+[{id:13,
+name:'name',
+gender:'gender',
+age:1,
+readyToTransfer:'rtt',
+notes:'notes',
+},]
