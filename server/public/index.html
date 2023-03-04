@@ -14,12 +14,12 @@
     </header>
     <section id="addKoala">
       <h2>Add Koala</h2>
-      <input type="text" id="nameIn" value="" placeholder="Name">
-      <input type="text" id="ageIn" value="" placeholder="Age">
-      <input type="text" id="genderIn" value="" placeholder="Gender">
-      <input type="text" id="readyForTransferIn" value="" placeholder="Transfer">
-      <input type="text" id="notesIn" value="" placeholder="Notes">
-      <button type="button" id="addButton">Add Koala</button>
+      <input type="text" id="nameIn" value="Test" placeholder="Name" required>
+      <input type="number" id="ageIn" value="2" placeholder="Age" required>
+      <input type="text" id="genderIn" value="M" placeholder="Gender" required>
+      <input type="text" id="readyForTransferIn" value="Y" maxlength ="1" placeholder="Transfer" required>
+      <input type="text" id="notesIn" value="None" placeholder="Notes">
+      <button type="button" id="addButton" onclick="submitKoala(event)">Add Koala</button>
     </section>
     <section>
       <h2>All Koalas</h2>
@@ -37,6 +37,7 @@
         </tbody>
       </table>
     </section>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
   </body>
 </html>
