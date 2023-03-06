@@ -20,7 +20,7 @@ app.post('/koalas',(req,res) => {
   let koalaToAdd = req.body
   //console.log(koalaToAdd[0].name,'test for name ')
   koalaTable.push({
-    id:i,
+    id:Number(i)+1,
     name:koalaToAdd[0].name,
     gender:koalaToAdd[0].gender,
     age:koalaToAdd[0].age,
@@ -39,6 +39,7 @@ app.post('/koalas',(req,res) => {
 app.get('/koalas',(req,res) => {
   console.log('GET request made for /quotes')
   //to send back the list of quotes
+  console.log(koalaTable, 'the get is here ')
   res.send(koalaTable)
 })
 
