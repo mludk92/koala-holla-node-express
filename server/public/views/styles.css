@@ -1,0 +1,57 @@
+body{
+    margin: 0;
+}
+
+#viewKoalas {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #viewKoalas td, #viewKoalas th {
+    border-bottom: 1px solid #ee4343;
+    padding: 8px;
+    border-right:1px solid #ee4343;
+  }
+  
+
+  
+  #viewKoalas tr:hover {background-color: #ddd;}
+  
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    border-bottom:1px inset #030000;
+    border-right:1px solid #030000;
+    color: rgb(12, 1, 1);
+  }
+
+  header{
+    display:inline-block;
+    width:100%;
+    background-color: lightblue;
+    }
+h1#headH{
+    font-size: 75px;
+    border: none;
+
+
+} 
+   
+#headH{
+    font-weight:bold;
+    font-size:25px;
+    color:#242323;
+    display:inline-flex;
+    border-bottom: solid black;
+
+    }
+
+    
+
+
+.icon {
+    max-height: 300px;
+    max-width: 300px;
+}
