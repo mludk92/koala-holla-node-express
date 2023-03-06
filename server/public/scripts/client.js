@@ -74,7 +74,8 @@ function getKoalas(){
           <td>${koalasFromServer[k].gender}</td>
           <td id="ready">${koalasFromServer[k].readyToTransfer}</td>
           <td>${koalasFromServer[k].notes}</td><span>
-          <td id="buttonForTransfer"><button>Ready to Transfer</button></td>          
+          <td id="buttonForTransfer"><button>Ready to Transfer</button></td> 
+          <td> <button> Delete</td>          
         </tr>`}
         
           //<td>${koalasFromServer[i].id} id not needed, ready if it is. 
@@ -87,7 +88,9 @@ function getKoalas(){
           <td>${koalasFromServer[i].age}</td>
           <td>${koalasFromServer[i].gender}</td>
           <td id="ready">${koalasFromServer[i].readyToTransfer}</td>
-          <td>${koalasFromServer[i].notes}</td><span>          
+          <td>${koalasFromServer[i].notes}</td><span>
+          <td> </td>
+          <td> <button> Delete</td>          
         </tr>`}
          
       }
