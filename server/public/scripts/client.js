@@ -75,7 +75,7 @@ function getKoalas(){
           <td id="ready">${koalasFromServer[k].readyToTransfer}</td>
           <td>${koalasFromServer[k].notes}</td><span>
           <td id="buttonForTransfer"><button>Ready to Transfer</button></td> 
-          <td> <button> Delete</td>          
+          <td> <button onClick="deleteKoala(${i})"> Delete</td>          
         </tr>`}
         
           //<td>${koalasFromServer[i].id} id not needed, ready if it is. 
@@ -90,7 +90,7 @@ function getKoalas(){
           <td id="ready">${koalasFromServer[i].readyToTransfer}</td>
           <td>${koalasFromServer[i].notes}</td><span>
           <td> </td>
-          <td> <button> Delete</td>          
+          <td> <button onClick="deleteKoala(${i})"> Delete</td>          
         </tr>`}
          
       }
@@ -103,22 +103,14 @@ function getKoalas(){
 }
 getKoalas()
 
-// let koalaTable = 
-// [{id:13,
-// name:'name',
-// gender:'gender',
-// age:1,
-// readyToTransfer:'rtt',
-// notes:'notes',
-// },]
+function deleteKoala(index){
+  console.log(`Deleting Koala ${index}`)
+  axios.delete(`/koalas/${index}`).then((response)=>{
+      console.log(response)
+      getKoalas()
+  }).catch((error)=>{
+      console.log(error)
+      AudioListener('Something went wrong')
+  })
+}
 
-
-// console.log(document.querySelector('#viewKoalas'))
-
-// function createButtonTransfer(){
-//   let readyIsYes = document.querySelector('#ready')
-//   if(readyIsYes.innerHTML === 'Y'){
-//     readyIsYes.parentElement = `<button type="button" id="addButton" onclick="submitKoala(event)">Add Koala</button>`
-//   }
-// }
-// createButtonTransfer()

@@ -44,6 +44,15 @@ app.get('/koalas',(req,res) => {
 })
 
 
+app.delete('/koalas/:id',(req,res)=>{
+  //What are we deleting ???
+  console.log(req.params.id)
+  const deleteIndex = Number(req.params.id)  //Similar to req.body but subset of info included
+  koalaTable = koalaTable.filter((koala, index)=>index !== deleteIndex )
+  // Always send back a response
+  res.sendStatus(200)
+})
+
 // Start listening for requests on a specific port
 app.listen(PORT, () => {
   console.log('listening on port', PORT);
