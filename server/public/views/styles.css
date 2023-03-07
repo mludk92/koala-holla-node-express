@@ -31,9 +31,10 @@ body{
     display:inline-block;
     width:100%;
     background-color: lightblue;
+    max-height: 307px;
     }
 h1#headH{
-    font-size: 75px;
+    font-size: 150px;
     border: none;
 
 
@@ -45,6 +46,7 @@ h1#headH{
     color:#242323;
     display:inline-flex;
     border-bottom: solid black;
+    padding-left:  20px ;
 
     }
 

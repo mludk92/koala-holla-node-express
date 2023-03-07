@@ -17,7 +17,7 @@
       <input type="text" id="nameIn"  placeholder="Name" required>
       <input type="number" id="ageIn"  placeholder="Age" required>
       <input type="text" id="genderIn"  placeholder="Gender" required>
-      <input type="text" id="readyForTransferIn" maxlength ="1" placeholder="Transfer" required>
+      <input type="text" id="readyForTransferIn" maxlength ="1" placeholder="Transfer" list="mylist" required>
       <input type="text" id="notesIn" placeholder="Notes">
       <button type="button" id="addButton" onclick="submitKoala(event)">Add Koala</button>
     </section>
@@ -35,6 +35,10 @@
         </thead>
         <tbody id="viewKoalas"> 
         </tbody>
+        <datalist id="mylist">
+          <option value="Y">
+          <option value="N">
+       </datalist>
         
       </table>
     </section>
