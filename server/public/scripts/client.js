@@ -72,13 +72,14 @@ function getKoalas(){
           <td contenteditable="true">${koalasFromServer[k].name}</td>
           <td contenteditable="true">${koalasFromServer[k].age}</td>
           <td contenteditable="true">${koalasFromServer[k].gender}</td>
-          <td id="ready" contenteditable="true">${koalasFromServer[k].readyToTransfer}</td>
+          <td> <input type="text" id="ready" list="mylist" maxlength ="1" onClick="clearValue(event)" value="${koalasFromServer[k].readyToTransfer}" required></td>
           <td contenteditable="true">${koalasFromServer[k].notes}</td><span>
           <td id="buttonForTransfer"><button>Ready to Transfer</button></td> 
           <td> <button onClick="deleteKoala(${i})"> Delete</button></td>
           <td> <button onClick="updateEdits(${i})" > Update Edits</button></td>        
         </tr>`}
         //going to need alter statment for db to update edits. 
+        // if rft is changed to yes rerun the the rtt funciton on update edits
           //<td>${koalasFromServer[i].id} id not needed, ready if it is. 
         
       }
@@ -88,10 +89,11 @@ function getKoalas(){
           <td>${koalasFromServer[k].name}</td>
           <td>${koalasFromServer[k].age}</td>
           <td>${koalasFromServer[k].gender}</td>
-          <td id="ready">${koalasFromServer[k].readyToTransfer}</td>
+          <td> <input type="text" id="ready" list="mylist" maxlength ="1" onClick="clearValue(event)" value="${koalasFromServer[k].readyToTransfer}" required></td>
           <td>${koalasFromServer[k].notes}</td><span>
           <td> </td>
-          <td> <button onClick="deleteKoala(${i})"> Delete</td>          
+          <td> <button onClick="deleteKoala(${i})"> Delete</td>
+          <td> <button onClick="updateEdits(${i})" > Update Edits</button></td>          
         </tr>`}
          
       }
@@ -115,3 +117,6 @@ function deleteKoala(index){
   })
 }
 
+function clearValue(event){
+ event.target.value = ''
+}
