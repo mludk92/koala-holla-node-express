@@ -84,17 +84,17 @@ function getKoalas(){
       else{
         {document.querySelector('#viewKoalas').innerHTML += 
         `<tr>
-          <td>${koalasFromServer[i].name}</td>
-          <td>${koalasFromServer[i].age}</td>
-          <td>${koalasFromServer[i].gender}</td>
-          <td id="ready">${koalasFromServer[i].readyToTransfer}</td>
-          <td>${koalasFromServer[i].notes}</td><span>
+          <td>${koalasFromServer[k].name}</td>
+          <td>${koalasFromServer[k].age}</td>
+          <td>${koalasFromServer[k].gender}</td>
+          <td id="ready">${koalasFromServer[k].readyToTransfer}</td>
+          <td>${koalasFromServer[k].notes}</td><span>
           <td> </td>
           <td> <button onClick="deleteKoala(${i})"> Delete</td>          
         </tr>`}
          
       }
-       
+      i++   
   }
 
 
