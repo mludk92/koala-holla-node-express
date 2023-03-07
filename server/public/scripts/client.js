@@ -69,15 +69,16 @@ function getKoalas(){
         {document.querySelector('#viewKoalas').innerHTML += 
         `<tr>
           
-          <td>${koalasFromServer[k].name}</td>
-          <td>${koalasFromServer[k].age}</td>
-          <td>${koalasFromServer[k].gender}</td>
-          <td id="ready">${koalasFromServer[k].readyToTransfer}</td>
-          <td>${koalasFromServer[k].notes}</td><span>
+          <td contenteditable="true">${koalasFromServer[k].name}</td>
+          <td contenteditable="true">${koalasFromServer[k].age}</td>
+          <td contenteditable="true">${koalasFromServer[k].gender}</td>
+          <td id="ready" contenteditable="true">${koalasFromServer[k].readyToTransfer}</td>
+          <td contenteditable="true">${koalasFromServer[k].notes}</td><span>
           <td id="buttonForTransfer"><button>Ready to Transfer</button></td> 
-          <td> <button onClick="deleteKoala(${i})"> Delete</td>          
+          <td> <button onClick="deleteKoala(${i})"> Delete</button></td>
+          <td> <button onClick="updateEdits(${i})" > Update Edits</button></td>        
         </tr>`}
-        
+        //going to need alter statment for db to update edits. 
           //<td>${koalasFromServer[i].id} id not needed, ready if it is. 
         
       }
