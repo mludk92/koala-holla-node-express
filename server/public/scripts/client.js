@@ -89,7 +89,7 @@ function getKoalas(){
         `<tr>
           <td>${koalasFromServer[k].name}</td>
           <td>${koalasFromServer[k].age}</td>
-          <td>${koalasFromServer[k].gender}</td>
+          <td id="gender">${koalasFromServer[k].gender}</td>
           <td> <input type="text" id="ready" list="mylist" maxlength ="1" onClick="clearValue(event)" value="${koalasFromServer[k].readyToTransfer}" required></td>
           <td>${koalasFromServer[k].notes}</td><span>
           <td> </td>
@@ -105,7 +105,7 @@ function getKoalas(){
 }) //ALWAYS add .catch
 
 }
-// getKoalas()
+getKoalas()
 
 // function deleteKoala(index){
 //   console.log(`Deleting Koala ${index}`)
@@ -146,4 +146,45 @@ function deleteKoala(index) {
                   swal("Your record has not been delete!");
        }
     });
+}
+
+function searchFunctionName() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    console.log(td)
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function searchFunctionGender() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput2");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    console.log(td)
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      console.log(td)
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
 }

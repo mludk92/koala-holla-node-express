@@ -23,7 +23,11 @@
     </section>
     <section>
       <h2>All Koalas</h2>
-      <table>
+
+      <input type="text" id="myInput" onkeyup="searchFunctionName()" placeholder="Search for names.." title="Search for Panda by Name">
+      <input type="text" id="myInput2" onkeyup="searchFunctionGender()" placeholder="Search by gender.." title="Search for Panda by Gender">
+    
+      <table id="myTable">
         <thead>
           <tr>
             <th>Name</th>
