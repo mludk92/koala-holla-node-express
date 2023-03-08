@@ -41,6 +41,8 @@ router.post('/',(req,res) => {
   })
 
 // PUT
+// this api end-point update an existing item object
+// for that we get `id` and `title` from api end-point of item to update
 
 
 // DELETE

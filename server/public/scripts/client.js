@@ -148,6 +148,9 @@ function deleteKoala(index) {
     });
 }
 
+
+
+//search functions to filter by name and gender 
 function searchFunctionName() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
