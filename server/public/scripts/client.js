@@ -1,5 +1,6 @@
 console.log( 'js' );
 
+
 let nameIn = document.querySelector('#nameIn').value
 let ageIn = Number(document.querySelector('#ageIn').value)
 let genderIn = document.querySelector('#genderIn').value
@@ -104,19 +105,45 @@ function getKoalas(){
 }) //ALWAYS add .catch
 
 }
-getKoalas()
+// getKoalas()
 
-function deleteKoala(index){
-  console.log(`Deleting Koala ${index}`)
-  axios.delete(`/koalas/${index}`).then((response)=>{
-      console.log(response)
-      getKoalas()
-  }).catch((error)=>{
-      console.log(error)
-      AudioListener('Something went wrong')
-  })
-}
+// function deleteKoala(index){
+//   console.log(`Deleting Koala ${index}`)
+
+//   axios.delete(`/koalas/${index}`).then((response)=>{
+//       console.log(response)
+//       getKoalas()
+//   }).catch((error)=>{
+//       console.log(error)
+//       AudioListener('Something went wrong')
+//   })
+// }
 
 function clearValue(event){
  event.target.value = ''
+}
+
+//updated delete funciton to use sweetalert swal 
+function deleteKoala(index) {
+
+  swal({
+         title: "Are you sure?",
+         text: "Once deleted, you will not be able to recover this record!",
+         icon: "warning",
+         buttons: true,
+         dangerMode: true,
+       })
+      .then((willDelete) => {
+           if (willDelete) {
+              axios.delete(`/koalas/${index}`).then((response)=>{
+              console.log(response)
+              getKoalas()
+          }).catch((error)=>{
+              console.log(error)
+              AudioListener('Something went wrong')
+          })
+           } else {
+                  swal("Your record has not been delete!");
+       }
+    });
 }
