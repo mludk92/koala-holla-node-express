@@ -67,14 +67,14 @@ function getKoalas(){
     let i = 0
     console.log(i,'i current')
     for(let k in koalasFromServer){
-      if(koalasFromServer[k].readyToTransfer==='Y'){
+      if(koalasFromServer[k].readyToTransfer==='TRUE'){
         {document.querySelector('#viewKoalas').innerHTML += 
         `<tr>
           
           <td contenteditable="true">${koalasFromServer[k].name}</td>
           <td contenteditable="true">${koalasFromServer[k].age}</td>
           <td contenteditable="true">${koalasFromServer[k].gender}</td>
-          <td> <input type="text" id="ready" list="mylist" maxlength ="1" onClick="clearValue(event)" value="${koalasFromServer[k].readyToTransfer}" required></td>
+          <td> <input type="text" id="ready" list="mylist" maxlength ="5" onClick="clearValue(event)" value="${koalasFromServer[k].ready_to_transfer}" required></td>
           <td contenteditable="true">${koalasFromServer[k].notes}</td><span>
           <td id="buttonForTransfer"><button>Ready to Transfer</button></td> 
           <td> <button onClick="deleteKoala(${i})"> Delete</button></td>
@@ -91,7 +91,7 @@ function getKoalas(){
           <td>${koalasFromServer[k].name}</td>
           <td>${koalasFromServer[k].age}</td>
           <td id="gender">${koalasFromServer[k].gender}</td>
-          <td> <input type="text" id="ready" list="mylist" maxlength ="1" onClick="clearValue(event)" value="${koalasFromServer[k].readyToTransfer}" required></td>
+          <td> <input type="text" id="ready" list="mylist" maxlength ="5" onClick="clearValue(event)" value="${koalasFromServer[k].ready_to_transfer}" required></td>
           <td>${koalasFromServer[k].notes}</td><span>
           <td> </td>
           <td> <button onClick="deleteKoala(${i})"> Delete</td>
