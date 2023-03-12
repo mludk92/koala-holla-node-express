@@ -17,20 +17,21 @@ function submitKoala(event){
   document.querySelector('#notesIn').value)
 
   //writeTable()
-  let koalasForServer = [{
-    name:document.querySelector('#nameIn').value,
-    gender:document.querySelector('#genderIn').value,
-    age:Number(document.querySelector('#ageIn').value),
-    readyToTransfer:document.querySelector('#readyForTransferIn').value,
-    notes:document.querySelector('#notesIn').value,
-    },]
+  let koalasForServer = [
+    document.querySelector('#nameIn').value,
+    document.querySelector('#genderIn').value,
+    Number(document.querySelector('#ageIn').value),
+    document.querySelector('#readyForTransferIn').value,
+   document.querySelector('#notesIn').value,
+    ]
     axios.post('/koalas',koalasForServer).then((response) => {
     console.log(response)
-    getKoalas()
+    
 }).catch((error) => {
     console.log('error')
     alert('Something went wrong')
 })
+getKoalas()
 document.querySelector('#nameIn').value = ''
 document.querySelector('#ageIn').value = ''
 document.querySelector('#genderIn').value = ''
