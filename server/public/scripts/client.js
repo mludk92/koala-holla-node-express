@@ -61,13 +61,13 @@ function getKoalas(){
     console.log(response)
   
     let koalasFromServer = response.data
-    console.log(koalasFromServer.name,'response')
+    console.log(koalasFromServer.id,'response')
     let contentDiv = document.querySelector('#viewKoalas') 
     contentDiv.innerHTML = ''
-    let i = 0
-    console.log(i,'i current')
+    // let i = 0
+    // console.log(i,'i current')
     for(let k in koalasFromServer){
-      if(koalasFromServer[k].readyToTransfer==='TRUE'){
+      if(koalasFromServer[k].ready_to_transfer===true){
         {document.querySelector('#viewKoalas').innerHTML += 
         `<tr>
           
@@ -77,8 +77,8 @@ function getKoalas(){
           <td> <input type="text" id="ready" list="mylist" maxlength ="5" onClick="clearValue(event)" value="${koalasFromServer[k].ready_to_transfer}" required></td>
           <td contenteditable="true">${koalasFromServer[k].notes}</td><span>
           <td id="buttonForTransfer"><button>Ready to Transfer</button></td> 
-          <td> <button onClick="deleteKoala(${i})"> Delete</button></td>
-          <td> <button onClick="updateEdits(${i})" > Update Edits</button></td>        
+          <td> <button onClick="deleteKoala(${koalasFromServer[k].id})"> Delete</button></td>
+          <td> <button onClick="updateEdits(${koalasFromServer[k].id})" > Update Edits</button></td>        
         </tr>`}
         //going to need alter statment for db to update edits. 
         // if rft is changed to yes rerun the the rtt funciton on update edits
@@ -94,16 +94,19 @@ function getKoalas(){
           <td> <input type="text" id="ready" list="mylist" maxlength ="5" onClick="clearValue(event)" value="${koalasFromServer[k].ready_to_transfer}" required></td>
           <td>${koalasFromServer[k].notes}</td><span>
           <td> </td>
-          <td> <button onClick="deleteKoala(${i})"> Delete</td>
-          <td> <button onClick="updateEdits(${i})" > Update Edits</button></td>          
+          <td> <button onClick="deleteKoala(${koalasFromServer[k].id})"> Delete</td>
+          <td> <button onClick="updateEdits(${koalasFromServer[k].id})" > Update Edits</button></td>          
         </tr>`}
          
       }
-      i++   
+  
   }
 
 
-}) //ALWAYS add .catch
+}).catch((error)=> {
+  console.log(error);
+  alert('Something went wrong.');
+}); 
 
 }
 getKoalas()

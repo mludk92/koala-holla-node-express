@@ -48,13 +48,19 @@ router.post('/',(req,res) => {
 
 // DELETE
 //removes entry from koalatable where the index of the entry is referenced on click. 
-router.delete('/:id',(req,res)=>{
-    //What are we deleting ???
-    console.log(req.params.id)
-    const deleteIndex = Number(req.params.id)  //Similar to req.body but subset of info included
-    koalaTable = koalaTable.filter((koala, index)=>index !== deleteIndex )
-    // Always send back a response
-    res.sendStatus(200)
-  })
+router.delete('/:id', (req, res) => {
+ 
+  console.log(req.params.id); // Similar to req.body
+  const deleteIndex = Number(req.params.id);
+  let queryText = `delete from koala where id = $1`
+  //deleteIndex is the id of the item we want to delete
+  //                        $1
+  pool.query(queryText,[deleteIndex]).then((result)=>{
+      res.sendStatus(200)
+  }).catch((error)=>{
+      console.log(`Error in DELETE ${error} `)
+      res.sendStatus(500)})
+});
+
 
 module.exports = router;
