@@ -26,12 +26,12 @@ function submitKoala(event){
     ]
     axios.post('/koalas',koalasForServer).then((response) => {
     console.log(response)
-    
+    getKoalas()   
 }).catch((error) => {
     console.log('error')
     alert('Something went wrong')
 })
-getKoalas()
+
 document.querySelector('#nameIn').value = ''
 document.querySelector('#ageIn').value = ''
 document.querySelector('#genderIn').value = ''
@@ -67,7 +67,7 @@ function getKoalas(){
     // let i = 0
     // console.log(i,'i current')
     for(let k in koalasFromServer){
-      if(koalasFromServer[k].ready_to_transfer===true){
+      if(koalasFromServer[k].ready_to_transfer===true && koalasFromServer[k].transfered ===null){
         {document.querySelector('#viewKoalas').innerHTML += 
         `<tr>
           
@@ -76,7 +76,7 @@ function getKoalas(){
           <td contenteditable="true">${koalasFromServer[k].gender}</td>
           <td> <input type="text" id="ready" list="mylist" maxlength ="5" onClick="clearValue(event)" value="${koalasFromServer[k].ready_to_transfer}" required></td>
           <td contenteditable="true">${koalasFromServer[k].notes}</td><span>
-          <td id="buttonForTransfer"><button>Ready to Transfer</button></td> 
+          <td id="buttonForTransfer"><button onClick=transfer(${koalasFromServer[k].id})>Ready to Transfer</button></td> 
           <td> <button onClick="deleteKoala(${koalasFromServer[k].id})"> Delete</button></td>
           <td> <button onClick="updateEdits(${koalasFromServer[k].id})" > Update Edits</button></td>        
         </tr>`}
@@ -85,7 +85,25 @@ function getKoalas(){
           //<td>${koalasFromServer[i].id} id not needed, ready if it is. 
         
       }
-      else{
+      else if(koalasFromServer[k].ready_to_transfer===true && koalasFromServer[k].transfered ===true){
+        {document.querySelector('#viewKoalas').innerHTML += 
+        `<tr>
+          
+          <td contenteditable="true">${koalasFromServer[k].name}</td>
+          <td contenteditable="true">${koalasFromServer[k].age}</td>
+          <td contenteditable="true">${koalasFromServer[k].gender}</td>
+          <td> <input type="text" id="ready" list="mylist" maxlength ="5" onClick="clearValue(event)" value="${koalasFromServer[k].ready_to_transfer}" required></td>
+          <td contenteditable="true">${koalasFromServer[k].notes}</td><span>
+          <td id="buttonForTransfer">Transfered</button></td> 
+          <td> <button onClick="deleteKoala(${koalasFromServer[k].id})"> Delete</button></td>
+          <td> <button onClick="updateEdits(${koalasFromServer[k].id})" > Update Edits</button></td>        
+        </tr>`}
+        //going to need alter statment for db to update edits. 
+        // if rft is changed to yes rerun the the rtt funciton on update edits
+          //<td>${koalasFromServer[i].id} id not needed, ready if it is. 
+        
+      }
+      else {
         {document.querySelector('#viewKoalas').innerHTML += 
         `<tr>
           <td>${koalasFromServer[k].name}</td>
@@ -93,7 +111,7 @@ function getKoalas(){
           <td id="gender">${koalasFromServer[k].gender}</td>
           <td> <input type="text" id="ready" list="mylist" maxlength ="5" onClick="clearValue(event)" value="${koalasFromServer[k].ready_to_transfer}" required></td>
           <td>${koalasFromServer[k].notes}</td><span>
-          <td> </td>
+          <td>Not Ready </td>
           <td> <button onClick="deleteKoala(${koalasFromServer[k].id})"> Delete</td>
           <td> <button onClick="updateEdits(${koalasFromServer[k].id})" > Update Edits</button></td>          
         </tr>`}
@@ -195,3 +213,53 @@ function searchFunctionGender() {
     }       
   }
 }
+
+
+//cant figure out how to get the body populated with data from DOM
+// //Put
+// function updateEdits(index) {
+
+//   swal({
+//          title: "Are you sure?",
+//          text: "Once update, this record will be changed for ever!",
+//          icon: "warning",
+//          buttons: true,
+//          dangerMode: true,
+//        })
+//       .then((willUpdate) => {
+//            if (willUpdate) {
+//               axios.put(`/koalas/${index}`).then((response)=>{
+//               console.log(response)
+//               getKoalas()
+//           }).catch((error)=>{
+//               console.log(error)
+//               AudioListener('Something went wrong')
+//           })
+//            } else {
+//                   swal("Your record has not been updated!");
+//        }
+//     });
+// }
+
+function transfer(index){
+  swal({
+             title: "Are you sure?",
+             text: "Once update, this record will be changed for ever!",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+           })
+          .then((willTransfer) => {
+               if (willTransfer) {
+                  axios.put(`/koalas/${index}`).then((response)=>{
+                  console.log(response)
+                  getKoalas()
+              }).catch((error)=>{
+                  console.log(error)
+                  AudioListener('Something went wrong')
+              })
+               } else {
+                      swal("Your record has not been updated!");
+           }
+        });
+    }
