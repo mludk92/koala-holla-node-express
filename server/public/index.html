@@ -47,6 +47,29 @@
         
       </table>
     </section>
+
+    <div>
+      <h1>Quick Run through of funtionality</h1>
+      <div> 
+        <ul>
+          <li>Input values into the 5 fields and press Add Koala button<br> to update the db and DOM with new values</li>
+          <li>Values are Editable on the DOM with use of ContentEditable, cannot update db </li>
+          <li>If input ready for tranfer is true, creates button ready to transfer</li>
+            <ul> <li>on click of ready to tranfer, updates value to transfered, on DOM and db</li>
+            <li> prompted by sweetalert to confirm click</li></ul>
+          <li>Delete Button to remove item from db and dom by db table index</li>
+              <ul><li>promted by sweetalert to confirm choice</li></ul>
+          <li> input field, and dom element which are drop downs hold valid inputs for the field</li>
+              <ul> <li> db requires boolean value so if drop down values are not used, the CRUD opertaions will not complete</li>
+              
+              <li>click in this field will clear the value and allow for new input incase of typing mistake</li></ul>
+          <li> update edits button is not functional at this point, req.body was {} and ran out time to research<br>how
+           to have these values sent in the response to CRUD operations</li>
+          <li> there are two search fields to narrow down results</li>
+            <ul> <li>search by name or gender, just start to type the value you are looking for</li></ul>
+          </ul>
+      </div>
+    </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

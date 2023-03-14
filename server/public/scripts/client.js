@@ -106,11 +106,11 @@ function getKoalas(){
       else {
         {document.querySelector('#viewKoalas').innerHTML += 
         `<tr>
-          <td>${koalasFromServer[k].name}</td>
-          <td>${koalasFromServer[k].age}</td>
-          <td id="gender">${koalasFromServer[k].gender}</td>
-          <td> <input type="text" id="ready" list="mylist" maxlength ="5" onClick="clearValue(event)" value="${koalasFromServer[k].ready_to_transfer}" required></td>
-          <td>${koalasFromServer[k].notes}</td><span>
+          <td contenteditable="true">${koalasFromServer[k].name}</td>
+          <td contenteditable="true">${koalasFromServer[k].age}</td>
+          <td contenteditable="true" id="gender">${koalasFromServer[k].gender}</td>
+          <td contenteditable="true"> <input type="text" id="ready" list="mylist" maxlength ="5" onClick="clearValue(event)" value="${koalasFromServer[k].ready_to_transfer}" required></td>
+          <td contenteditable="true">${koalasFromServer[k].notes}</td><span>
           <td>Not Ready </td>
           <td> <button onClick="deleteKoala(${koalasFromServer[k].id})"> Delete</td>
           <td> <button onClick="updateEdits(${koalasFromServer[k].id})" > Update Edits</button></td>          
